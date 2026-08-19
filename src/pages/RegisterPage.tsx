@@ -88,7 +88,7 @@ export function RegisterPage() {
         phoneNumber: form.phoneNumber.trim(),
         password: form.password,
       })
-      navigate('/', { state: { registered: true } })
+      navigate('/login', { state: { registered: true } })
     } catch (error) {
       setApiError(getApiErrorInfo(error))
     } finally {
@@ -235,7 +235,7 @@ export function RegisterPage() {
               </form>
 
               <p className="text-center text-muted mt-4 mb-0">
-                Already have an account? <Link to="/">Back to home</Link>
+                Already have an account? <Link to="/login">Sign in</Link>
               </p>
             </div>
           </div>

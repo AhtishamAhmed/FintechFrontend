@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { loadSession } from '../auth/session'
 
 // One shared axios instance for the whole app. Anything that needs to talk
 // to the backend imports this instead of calling axios directly, so the
@@ -8,6 +9,16 @@ export const httpClient = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
+})
+
+// Attach the JWT (if we have one) to every outgoing request, so pages never
+// have to remember to do this themselves.
+httpClient.interceptors.request.use((config) => {
+  const session = loadSession()
+  if (session?.token) {
+    config.headers.Authorization = `Bearer ${session.token}`
+  }
+  return config
 })
 
 // The backend's success responses are camelCase (MVC's default JSON
