@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Logs
 logs
 *.log
@@ -23,9 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-=======
+
+# .NET (in case backend files are ever added here by mistake)
 bin/
 obj/
 .vs/
 *.user
->>>>>>> 0361fef4c665af2062290a2a50576775385112e9
